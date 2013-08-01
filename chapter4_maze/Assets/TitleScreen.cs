@@ -12,7 +12,7 @@ public class TitleScreen : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetButtonDown("Jump")) {
+		if (Input.touches.Length > 0) {
 			Application.LoadLevel("meiro");
 		}
 	}
@@ -21,6 +21,6 @@ public class TitleScreen : MonoBehaviour {
 		int sw = Screen.width;
 		int sh = Screen.height;
 		GUI.Label(new Rect(0, sh / 4, sw, sh / 4), "BALL MAZE", labelStyle);
-		GUI.Label(new Rect(0, sh / 2, sw, sh / 4), "Hit Space Key", labelStyle);
+		GUI.Label(new Rect(0, sh / 2, sw, sh / 4), "Tap to Start", labelStyle);
 	}
 }
