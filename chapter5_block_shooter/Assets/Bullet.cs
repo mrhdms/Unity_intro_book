@@ -15,7 +15,7 @@ public class Bullet : MonoBehaviour {
 	
 	void OnCollisionEnter (Collision collisionInfo) {
 		if (collisionInfo.gameObject.tag == "Box") {
-			Destroy(collisionInfo.gameObject);
+			collisionInfo.gameObject.SendMessage("ApplyDamage");
 		}
 		Destroy(gameObject);
 	}
