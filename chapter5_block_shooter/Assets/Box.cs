@@ -27,6 +27,7 @@ public class Box : MonoBehaviour {
 		if ( !damaged ) {
 			damaged = true;
 			killTimer = 0.4f;
+			rigidbody.AddForce(Vector3.up * 15.0f, ForceMode.Impulse);
 		}
 	}
 }
