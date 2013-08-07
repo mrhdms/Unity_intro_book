@@ -20,8 +20,11 @@ public class BoxGenerator : MonoBehaviour {
 	void Update () {
 		timer -= Time.deltaTime;
 		if ( timer < 0.0f ) {
+			float offsx = Random.Range(-8.0f, 8.0f);
+			float offsz = Random.Range(-4.0f, 4.0f);
+			Vector3 position = transform.position + new Vector3( offsx, 0, offsz );
 			GameObject prefab = nextIsRed ? redBoxPrefab : blueBoxPrefab;
-			Instantiate( prefab, transform.position, transform.rotation );
+			Instantiate( prefab, position, Random.rotation );
 			
 			timer = interval;
 			nextIsRed = !nextIsRed;
