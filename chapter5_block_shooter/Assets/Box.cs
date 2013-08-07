@@ -5,6 +5,9 @@ public class Box : MonoBehaviour {
 	
 	public GameObject explosionPrefab;
 	
+	private bool damaged;
+	private float killTimer;
+	
 	// Use this for initialization
 	void Start () {
 	
@@ -12,11 +15,18 @@ public class Box : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+		if (!damaged) return;
+		killTimer -= Time.deltaTime;
+		if (killTimer <= 0.0f) {
+			Instantiate(explosionPrefab, transform.position, transform.rotation);
+			Destroy(gameObject);
+		}
 	}
 	
 	void ApplyDamage() {
-		Instantiate(explosionPrefab, transform.position, transform.rotation);
-		Destroy(gameObject);
+		if ( !damaged ) {
+			damaged = true;
+			killTimer = 0.4f;
+		}
 	}
 }
